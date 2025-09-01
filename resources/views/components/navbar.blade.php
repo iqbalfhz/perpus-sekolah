@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="hidden md:flex items-center gap-2">
-            <a href="/login"
+            <a href="/admin/login"
                 class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H3m0 0l4-4m-4 4l4 4" />

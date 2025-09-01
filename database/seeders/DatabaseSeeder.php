@@ -13,21 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        // Set locale Faker ke bahasa Indonesia
+        \Faker\Factory::create('id_ID');
 
+        // User
+        User::factory(10)->create();
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
         ]);
 
+        // Rak
+        \App\Models\Rak::factory(5)->create();
+        // Kategori
+        \App\Models\Kategori::factory(5)->create();
+        // Anggota
+        \App\Models\Anggota::factory(20)->create();
+        // Buku
+        \App\Models\Buku::factory(30)->create();
+        // Peminjaman
+        \App\Models\Peminjaman::factory(40)->create();
+        // Denda
+        \App\Models\Denda::factory(15)->create();
 
-        //call BookSeeder
-        $this->call(
-            [
-                BookSeeder::class,
-                PostSeeder::class,
-                ContactSeeder::class,
-            ]
-        );
+        // Seeder lain jika diperlukan
+        $this->call([
+            BookSeeder::class,
+            PostSeeder::class,
+            ContactSeeder::class,
+        ]);
     }
 }
