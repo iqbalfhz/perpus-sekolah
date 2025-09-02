@@ -1,6 +1,6 @@
 {{-- resources/views/pages/koleksi-buku.blade.php --}}
 <x-layout>
-    <section class="max-w-7xl mx-auto px-4 py-8" x-data="{
+    <section class="container mx-auto px-4 py-8" x-data="{
         view: 'grid',
         init() {
             const saved = localStorage.getItem('koleksi_view');
@@ -37,7 +37,7 @@
         {{-- Toolbar --}}
         <form method="GET" action="{{ route('koleksi.buku') }}"
             class="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-4 mb-4">
-            {{-- Search (input group, tidak absolute) --}}
+            {{-- Search --}}
             <div class="md:col-span-5">
                 <label class="sr-only" for="q">Cari</label>
                 <div class="flex">
@@ -113,7 +113,7 @@
         </form>
 
         {{-- Info hasil & reset --}}
-        <div class="flex flex-wrap items-center gap-2 mb-6">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
             <span class="text-sm text-gray-600 dark:text-gray-400">Menampilkan
                 <span class="font-medium text-gray-900 dark:text-white">{{ $bukus->total() }}</span> buku
             </span>
@@ -151,27 +151,27 @@
         </div>
 
         @if ($bukus->count())
-            {{-- GRID (gambar proporsional & tidak terlalu besar) --}}
-            <div x-show="view==='grid'" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {{-- GRID: paksa 4 kolom di >=1280px, tanpa pembatas lebar --}}
+            <div x-show="view==='grid'"
+                class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
                 @foreach ($bukus as $buku)
                     @php
                         $img = $buku->foto
                             ? (\Illuminate\Support\Str::startsWith($buku->foto, ['http://', 'https://'])
                                 ? $buku->foto
                                 : asset('storage/' . $buku->foto))
-                            : asset('img/buku.jpg'); // default
+                            : asset('img/buku.jpg');
                         $available = (int) ($buku->stok ?? 0) > 0;
                     @endphp
 
                     <article id="buku-{{ $buku->id }}"
-                        class="group bg-white dark:bg-gray-800 rounded-2xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
-                        <div
-                            class="relative w-full overflow-hidden rounded-b-none
-                        aspect-[2/3] md:aspect-[3/4]">
+                        class="group bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
+                        {{-- Thumbnail kecil --}}
+                        <div class="relative w-full h-40 lg:h-44 overflow-hidden">
                             <img src="{{ $img }}" alt="Sampul {{ $buku->judul }}" loading="lazy"
                                 class="w-full h-full object-cover" />
                             <span
-                                class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium
+                                class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium
                            {{ $available
                                ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
                                : 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300' }}">
@@ -181,20 +181,18 @@
                             </span>
                         </div>
 
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
+                        <div class="p-3">
+                            <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
                                 {{ $buku->judul }}</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                            <p class="text-xs text-gray-600 dark:text-gray-300 mb-1">
                                 Penulis: <span class="font-medium">{{ $buku->penulis ?? '-' }}</span>
                             </p>
 
-                            <dl class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-500 dark:text-gray-400">
+                            <dl class="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px] text-gray-500 dark:text-gray-400">
                                 <div>
-                                    <dt class="sr-only">Kategori</dt>
                                     <dd>Kategori: {{ optional($buku->kategori)->nama ?? '-' }}</dd>
                                 </div>
                                 <div>
-                                    <dt class="sr-only">Rak</dt>
                                     <dd>Rak: {{ optional($buku->rak)->nama ?? '-' }}</dd>
                                 </div>
                                 @if (!empty($buku->tahun_terbit))
@@ -209,13 +207,13 @@
                                 @endif
                             </dl>
 
-                            <div class="mt-3 flex items-center justify-between">
-                                <span class="text-xs text-gray-500 dark:text-gray-400">Stok:
+                            <div class="mt-2 flex items-center justify-between">
+                                <span class="text-[11px] text-gray-500 dark:text-gray-400">Stok:
                                     {{ (int) ($buku->stok ?? 0) }}</span>
                                 <a href="{{ route('koleksi.buku') }}#buku-{{ $buku->id }}"
-                                    class="inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                    class="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline">
                                     Detail
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                     </svg>
@@ -226,30 +224,29 @@
                 @endforeach
             </div>
 
-            {{-- LIST (thumbnail kecil & konsisten) --}}
-            <div x-show="view==='list'" class="space-y-4">
+            {{-- LIST (compact) --}}
+            <div x-show="view==='list'" class="space-y-3">
                 @foreach ($bukus as $buku)
                     @php
                         $img = $buku->foto
                             ? (\Illuminate\Support\Str::startsWith($buku->foto, ['http://', 'https://'])
                                 ? $buku->foto
                                 : asset('storage/' . $buku->foto))
-                            : asset('img/buku.jpg'); // default
+                            : asset('img/buku.jpg');
                         $available = (int) ($buku->stok ?? 0) > 0;
                     @endphp
 
                     <article id="buku-{{ $buku->id }}"
-                        class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 p-4">
-                        <div class="flex gap-4">
-                            <div class="w-24 h-32 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0">
+                        class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 p-3">
+                        <div class="flex gap-3">
+                            <div class="w-20 h-28 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 shrink-0">
                                 <img src="{{ $img }}" alt="Sampul {{ $buku->judul }}" loading="lazy"
                                     class="w-full h-full object-cover">
                             </div>
-
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-start justify-between gap-2">
                                     <h3
-                                        class="text-base md:text-lg font-semibold text-gray-900 dark:text-white truncate">
+                                        class="text-sm md:text-base font-semibold text-gray-900 dark:text-white truncate">
                                         {{ $buku->judul }}</h3>
                                     <span
                                         class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium
@@ -259,10 +256,9 @@
                                         {{ $available ? 'Tersedia' : 'Dipinjam' }}
                                     </span>
                                 </div>
-
-                                <p class="text-sm text-gray-600 dark:text-gray-300">Penulis: <span
+                                <p class="text-xs text-gray-600 dark:text-gray-300">Penulis: <span
                                         class="font-medium">{{ $buku->penulis ?? '-' }}</span></p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                <p class="text-[11px] text-gray-500 dark:text-gray-400">
                                     Kategori: {{ optional($buku->kategori)->nama ?? '-' }} •
                                     Rak: {{ optional($buku->rak)->nama ?? '-' }}
                                     @if (!empty($buku->tahun_terbit))
@@ -272,14 +268,13 @@
                                         • ISBN: {{ $buku->isbn }}
                                     @endif
                                 </p>
-
-                                <div class="mt-2 flex items-center justify-between">
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">Stok:
+                                <div class="mt-1 flex items-center justify-between">
+                                    <span class="text-[11px] text-gray-500 dark:text-gray-400">Stok:
                                         {{ (int) ($buku->stok ?? 0) }}</span>
                                     <a href="{{ route('koleksi.buku') }}#buku-{{ $buku->id }}"
-                                        class="inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                        class="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline">
                                         Detail
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                         </svg>
@@ -291,8 +286,7 @@
                 @endforeach
             </div>
 
-            {{-- Pagination --}}
-            <div class="mt-8">
+            <div class="mt-6">
                 {{ $bukus->withQueryString()->links() }}
             </div>
         @else

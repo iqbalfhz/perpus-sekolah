@@ -3,12 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 use App\Models\Buku;
+use App\Http\Controllers\HomeController;
 
-// Halaman Utama
-Route::get('/', function () {
-    $bukus = Buku::latest()->take(6)->get(); // contoh: ambil 6 buku terbaru
-    return view('pages.home', compact('bukus'));
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Koleksi Buku
 Route::get('/koleksi-buku', [BukuController::class, 'index'])->name('koleksi.buku');

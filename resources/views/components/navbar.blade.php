@@ -43,7 +43,7 @@
                     </svg>
                 </button>
                 <div x-cloak x-show="openMenu === 'profile'" x-transition
-                    class="absolute right-0 mt-2 z-20 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
+                    class="absolute right-0 mt-2 z-50 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
                     <ul class="py-1 text-gray-700 dark:text-gray-200">
                         <li><a href="{{ route('profile.kelembagaan') }}"
                                 class="block px-4 py-2 hover:bg-blue-50 dark:hover:bg-gray-800">Kelembagaan</a></li>
@@ -72,7 +72,7 @@
                     </svg>
                 </button>
                 <div x-cloak x-show="openMenu === 'activities'" x-transition
-                    class="absolute right-0 mt-2 z-20 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
+                    class="absolute right-0 mt-2 z-50 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
                     <ul class="py-1 text-gray-700 dark:text-gray-200">
                         <li><a href="{{ route('activities.berita') }}"
                                 class="block px-4 py-2 hover:bg-blue-50 dark:hover:bg-gray-800">Berita & Pengumuman</a>
@@ -98,7 +98,7 @@
                     </svg>
                 </button>
                 <div x-cloak x-show="openMenu === 'recommendations'" x-transition
-                    class="absolute right-0 mt-2 z-20 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
+                    class="absolute right-0 mt-2 z-50 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded shadow">
                     <ul class="py-1 text-gray-700 dark:text-gray-200">
                         <li><a href="{{ route('recommendations.baru') }}"
                                 class="block px-4 py-2 hover:bg-blue-50 dark:hover:bg-gray-800">Buku Baru</a></li>

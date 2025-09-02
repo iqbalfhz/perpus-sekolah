@@ -15,28 +15,33 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div>
                     <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">Layanan
-                        Perpustakaan</h1>
-                    <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">Semua kebutuhan literasi
-                        Anda—peminjaman, pengembalian, konsultasi referensi, dan agenda literasi—di satu tempat.</p>
+                        Utama Perpustakaan</h1>
+                    <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+                        Dapatkan layanan peminjaman buku, pengembalian, cek status pinjaman, rekomendasi buku,
+                        konsultasi pustakawan, dan agenda literasi secara online.
+                    </p>
                     <div class="mt-5 flex flex-wrap gap-3">
                         <a href="#peminjaman"
-                            class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
-                            Peminjaman Buku
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                        <button data-modal-target="modalKonsultasi" data-modal-toggle="modalKonsultasi"
-                            class="inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 px-4 py-2 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                            Booking Konsultasi
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7a2 2 0 002 2z" />
-                            </svg>
-                        </button>
+                            class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">Peminjaman
+                            Buku</a>
+                        <a href="#pengembalian"
+                            class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition">Pengembalian
+                            Buku</a>
+                        <a href="#status"
+                            class="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-white hover:bg-purple-700 transition">Status
+                            Pinjaman</a>
+                        <a href="#rekomendasi"
+                            class="inline-flex items-center gap-2 rounded-lg bg-pink-600 px-4 py-2 text-white hover:bg-pink-700 transition">Rekomendasi
+                            Buku</a>
+                        <a href="#konsultasi"
+                            class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-white hover:bg-emerald-700 transition">Konsultasi
+                            Pustakawan</a>
+                        <a href="#agenda"
+                            class="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-white hover:bg-amber-700 transition">Agenda
+                            Literasi</a>
+                        <a href="#referensi"
+                            class="inline-flex items-center gap-2 rounded-lg bg-gray-600 px-4 py-2 text-white hover:bg-gray-700 transition">Referensi
+                            Digital</a>
                     </div>
                 </div>
                 <div class="lg:pl-10">
@@ -44,22 +49,22 @@
                         <div
                             class="rounded-2xl p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                             <div class="text-3xl font-bold text-blue-600">24/7</div>
-                            <div class="text-sm text-gray-500">Akses katalog</div>
+                            <div class="text-sm text-gray-500">Akses katalog buku & status pinjaman</div>
                         </div>
                         <div
                             class="rounded-2xl p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                             <div class="text-3xl font-bold text-emerald-600">Gratis</div>
-                            <div class="text-sm text-gray-500">Konsultasi referensi</div>
+                            <div class="text-sm text-gray-500">Konsultasi pustakawan & referensi</div>
                         </div>
                         <div
                             class="rounded-2xl p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                             <div class="text-3xl font-bold text-purple-600">Real-time</div>
-                            <div class="text-sm text-gray-500">Status peminjaman</div>
+                            <div class="text-sm text-gray-500">Status peminjaman & rekomendasi buku</div>
                         </div>
                         <div
                             class="rounded-2xl p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                             <div class="text-3xl font-bold text-amber-600">Terjadwal</div>
-                            <div class="text-sm text-gray-500">Agenda literasi</div>
+                            <div class="text-sm text-gray-500">Agenda literasi & event perpustakaan</div>
                         </div>
                     </div>
                 </div>
@@ -68,52 +73,87 @@
     </section>
 
     <!-- TABS: Kategori Layanan -->
+    <!-- TABS: Kategori Layanan (relevan untuk perpustakaan) -->
     <section class="py-8">
         <div class="container mx-auto px-4">
+
+            <!-- Header Tabs -->
             <div class="mb-6 border-b border-gray-200 dark:border-gray-700">
-                <ul class="flex flex-wrap -mb-px" id="tabs-layanan" data-tabs-toggle="#tabsContentLayanan"
+                <ul id="tabs-layanan" class="flex flex-wrap -mb-px" data-tabs-toggle="#tabsContentLayanan"
+                    data-tabs-active-classes="border-blue-600 text-blue-600 dark:text-blue-500 border-b-2"
+                    data-tabs-inactive-classes="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                     role="tablist">
+
                     <li class="me-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="tab-peminjaman"
-                            data-tabs-target="#peminjaman" type="button" role="tab" aria-controls="peminjaman"
-                            aria-selected="true">Peminjaman</button>
+                        <button id="tab-peminjaman" type="button" role="tab" aria-controls="pane-peminjaman"
+                            aria-selected="true" data-tabs-target="#pane-peminjaman"
+                            class="inline-block p-4 border-b-2 rounded-t-lg border-blue-600 text-blue-600">
+                            Peminjaman
+                        </button>
                     </li>
+
                     <li class="me-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="tab-konsultasi"
-                            data-tabs-target="#konsultasi" type="button" role="tab" aria-controls="konsultasi"
-                            aria-selected="false">Konsultasi</button>
+                        <button id="tab-keanggotaan" type="button" role="tab" aria-controls="pane-keanggotaan"
+                            aria-selected="false" data-tabs-target="#pane-keanggotaan"
+                            class="inline-block p-4 border-b-2 rounded-t-lg">
+                            Keanggotaan
+                        </button>
                     </li>
+
                     <li class="me-2" role="presentation">
-                        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="tab-referensi"
-                            data-tabs-target="#referensi" type="button" role="tab" aria-controls="referensi"
-                            aria-selected="false">Referensi Digital</button>
+                        <button id="tab-denda" type="button" role="tab" aria-controls="pane-denda"
+                            aria-selected="false" data-tabs-target="#pane-denda"
+                            class="inline-block p-4 border-b-2 rounded-t-lg">
+                            Denda & Perpanjangan
+                        </button>
                     </li>
+
+                    <li class="me-2" role="presentation">
+                        <button id="tab-referensi" type="button" role="tab" aria-controls="pane-referensi"
+                            aria-selected="false" data-tabs-target="#pane-referensi"
+                            class="inline-block p-4 border-b-2 rounded-t-lg">
+                            Referensi Digital
+                        </button>
+                    </li>
+
+                    <li class="me-2" role="presentation">
+                        <button id="tab-konsultasi" type="button" role="tab" aria-controls="pane-konsultasi"
+                            aria-selected="false" data-tabs-target="#pane-konsultasi"
+                            class="inline-block p-4 border-b-2 rounded-t-lg">
+                            Konsultasi
+                        </button>
+                    </li>
+
                     <li role="presentation">
-                        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="tab-agenda"
-                            data-tabs-target="#agenda" type="button" role="tab" aria-controls="agenda"
-                            aria-selected="false">Agenda Literasi</button>
+                        <button id="tab-agenda" type="button" role="tab" aria-controls="pane-agenda"
+                            aria-selected="false" data-tabs-target="#pane-agenda"
+                            class="inline-block p-4 border-b-2 rounded-t-lg">
+                            Agenda Literasi
+                        </button>
                     </li>
                 </ul>
             </div>
 
+            <!-- Panes -->
             <div id="tabsContentLayanan">
-                <!-- Tab Peminjaman -->
-                <div class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
-                    id="peminjaman" role="tabpanel" aria-labelledby="tab-peminjaman">
+                {{-- Peminjaman --}}
+                <div id="pane-peminjaman" role="tabpanel" aria-labelledby="tab-peminjaman"
+                    class="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="lg:col-span-2">
                             <h3 class="text-xl font-semibold text-blue-700 dark:text-blue-300 mb-2">Peminjaman &
                                 Pengembalian</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Lakukan peminjaman buku dengan cepat,
-                                perpanjang masa pinjam, dan pantau riwayat transaksi Anda.</p>
-
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Ajukan peminjaman, perpanjang masa pinjam, dan pantau riwayat. Gunakan OPAC untuk
+                                mencari buku.
+                            </p>
                             <div class="grid sm:grid-cols-2 gap-4">
                                 <a href="/peminjaman"
                                     class="group rounded-xl border border-gray-200 dark:border-gray-700 p-5 hover:shadow-md transition bg-white dark:bg-gray-800">
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h4 class="font-semibold">Ajukan Peminjaman</h4>
-                                            <p class="text-sm text-gray-500">Cari buku dan isi formulir pinjam</p>
+                                            <p class="text-sm text-gray-500">Isi formulir setelah memilih buku</p>
                                         </div>
                                         <div
                                             class="p-2 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-100 dark:bg-blue-900/30">
@@ -125,7 +165,7 @@
                                     <div class="flex items-center justify-between">
                                         <div>
                                             <h4 class="font-semibold">Pengembalian Cepat</h4>
-                                            <p class="text-sm text-gray-500">Scan kode & konfirmasi pengembalian</p>
+                                            <p class="text-sm text-gray-500">Scan & konfirmasi di loket</p>
                                         </div>
                                         <div
                                             class="p-2 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100 dark:bg-emerald-900/30">
@@ -139,21 +179,24 @@
                                 <ol class="relative border-s border-gray-200 dark:border-gray-700 ms-3">
                                     <li class="mb-6 ms-6">
                                         <span
-                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900"><span
-                                                class="h-2 w-2 rounded-full bg-blue-600"></span></span>
-                                        <p class="text-gray-700 dark:text-gray-200">Pilih buku di katalog</p>
+                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900">
+                                            <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+                                        </span>
+                                        <p class="text-gray-700 dark:text-gray-200">Cari buku di OPAC</p>
                                     </li>
                                     <li class="mb-6 ms-6">
                                         <span
-                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900"><span
-                                                class="h-2 w-2 rounded-full bg-blue-600"></span></span>
+                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900">
+                                            <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+                                        </span>
                                         <p class="text-gray-700 dark:text-gray-200">Ajukan peminjaman (online/loket)
                                         </p>
                                     </li>
                                     <li class="ms-6">
                                         <span
-                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900"><span
-                                                class="h-2 w-2 rounded-full bg-blue-600"></span></span>
+                                            class="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900">
+                                            <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+                                        </span>
                                         <p class="text-gray-700 dark:text-gray-200">Ambil buku & nikmati masa pinjam
                                         </p>
                                     </li>
@@ -170,7 +213,7 @@
                                 </div>
                                 <div class="flex items-center justify-between mt-2">
                                     <span class="text-sm text-gray-600 dark:text-gray-300">Perpanjangan</span>
-                                    <span class="text-sm font-semibold">Maks 2x</span>
+                                    <span class="text-sm font-semibold">Maks 2x (tanpa antrian)</span>
                                 </div>
                                 <div class="flex items-center justify-between mt-2">
                                     <span class="text-sm text-gray-600 dark:text-gray-300">Denda terlambat</span>
@@ -196,84 +239,79 @@
                     </div>
                 </div>
 
-                <!-- Tab Konsultasi -->
-                <div class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
-                    id="konsultasi" role="tabpanel" aria-labelledby="tab-konsultasi">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div class="lg:col-span-2">
-                            <h3 class="text-xl font-semibold text-emerald-700 dark:text-emerald-300 mb-2">Konsultasi &
-                                Referensi</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Butuh bantuan menemukan sumber ilmiah,
-                                jurnal, atau sitasi? Tim pustakawan siap membantu.</p>
-                            <div class="grid sm:grid-cols-2 gap-4">
-                                <button data-modal-target="modalKonsultasi" data-modal-toggle="modalKonsultasi"
-                                    class="group rounded-xl border border-gray-200 dark:border-gray-700 p-5 hover:shadow-md transition bg-white dark:bg-gray-800 text-left">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <h4 class="font-semibold">Booking Jadwal</h4>
-                                            <p class="text-sm text-gray-500">Pilih tanggal & pustakawan</p>
-                                        </div>
-                                        <div
-                                            class="p-2 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100 dark:bg-emerald-900/30">
-                                            🗓️</div>
-                                    </div>
-                                </button>
-                                <a href="/referensi"
-                                    class="group rounded-xl border border-gray-200 dark:border-gray-700 p-5 hover:shadow-md transition bg-white dark:bg-gray-800">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <h4 class="font-semibold">Pencarian Referensi</h4>
-                                            <p class="text-sm text-gray-500">Akses repositori & database</p>
-                                        </div>
-                                        <div
-                                            class="p-2 rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100 dark:bg-indigo-900/30">
-                                            🔎</div>
-                                    </div>
-                                </a>
-                            </div>
+                {{-- Keanggotaan --}}
+                <div id="pane-keanggotaan" role="tabpanel" aria-labelledby="tab-keanggotaan"
+                    class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-semibold text-emerald-700 dark:text-emerald-300 mb-2">Keanggotaan</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Daftar anggota perpustakaan untuk menikmati layanan peminjaman & akses penuh koleksi digital.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="/anggota/daftar"
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 hover:shadow-md transition bg-white dark:bg-gray-800">
+                            <h4 class="font-semibold">Pendaftaran Anggota</h4>
+                            <p class="text-sm text-gray-500">Isi data diri & unggah KTP/Kartu Pelajar</p>
+                        </a>
+                        <a href="/anggota/kartu"
+                            class="rounded-xl border border-gray-200 dark:border-gray-700 p-5 hover:shadow-md transition bg-white dark:bg-gray-800">
+                            <h4 class="font-semibold">Kartu Anggota Digital</h4>
+                            <p class="text-sm text-gray-500">Gunakan saat peminjaman & akses fasilitas</p>
+                        </a>
+                    </div>
+                    <ul class="mt-4 text-sm text-gray-600 dark:text-gray-300 list-disc ps-6">
+                        <li>Biaya pendaftaran: <strong>Gratis</strong></li>
+                        <li>Masa berlaku: 1 tahun, dapat diperpanjang</li>
+                    </ul>
+                </div>
 
-                            <div class="mt-6">
-                                <h5 class="font-semibold mb-2">Topik Populer</h5>
-                                <div class="flex flex-wrap gap-2 text-sm">
-                                    <a href="/referensi?q=Literature+Review"
-                                        class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Literature
-                                        Review</a>
-                                    <a href="/referensi?q=Manajemen+Referensi"
-                                        class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Manajemen
-                                        Referensi</a>
-                                    <a href="/referensi?q=Sitasi+APA"
-                                        class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Sitasi
-                                        APA</a>
-                                    <a href="/referensi?q=Plagiarisme"
-                                        class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Plagiarisme</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <aside class="space-y-4">
-                            <div
-                                class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800">
-                                <h5 class="font-semibold">Jam Layanan Konsultasi</h5>
-                                <ul class="text-sm text-gray-600 dark:text-gray-300 mt-2">
-                                    <li>Sen–Jum: 09.00–16.00</li>
-                                    <li>Istirahat: 12.00–13.00</li>
-                                </ul>
-                            </div>
-                            <div
-                                class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-900">
-                                <p class="text-sm text-gray-600 dark:text-gray-300">Balasan email <strong>&lt;24
-                                        jam</strong>.</p>
-                                <a href="mailto:pustakawan@example.com"
-                                    class="mt-2 inline-flex text-sm text-emerald-600 hover:underline">Email
-                                    Pustakawan</a>
-                            </div>
-                        </aside>
+                {{-- Denda & Perpanjangan --}}
+                <div id="pane-denda" role="tabpanel" aria-labelledby="tab-denda"
+                    class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-semibold text-rose-700 dark:text-rose-300 mb-2">Denda & Perpanjangan</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Hindari keterlambatan dengan perpanjangan online. Lihat rincian denda berikut.
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="text-left text-gray-500">
+                                <tr>
+                                    <th class="py-2">Jenis Koleksi</th>
+                                    <th class="py-2">Masa Pinjam</th>
+                                    <th class="py-2">Denda / Hari</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700 dark:text-gray-200">
+                                <tr class="border-t border-gray-200 dark:border-gray-700">
+                                    <td class="py-2">Buku Umum</td>
+                                    <td class="py-2">14 hari</td>
+                                    <td class="py-2">Rp1.000</td>
+                                </tr>
+                                <tr class="border-t border-gray-200 dark:border-gray-700">
+                                    <td class="py-2">Referensi</td>
+                                    <td class="py-2">Tidak dipinjamkan</td>
+                                    <td class="py-2">—</td>
+                                </tr>
+                                <tr class="border-t border-gray-200 dark:border-gray-700">
+                                    <td class="py-2">Buku Populer</td>
+                                    <td class="py-2">7 hari</td>
+                                    <td class="py-2">Rp2.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 flex gap-3">
+                        <a href="/perpanjangan"
+                            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">Perpanjang
+                            Sekarang</a>
+                        <a href="/aturan"
+                            class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">Kebijakan
+                            Lengkap</a>
                     </div>
                 </div>
 
-                <!-- Tab Referensi Digital -->
-                <div class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
-                    id="referensi" role="tabpanel" aria-labelledby="tab-referensi">
+                {{-- Referensi Digital --}}
+                <div id="pane-referensi" role="tabpanel" aria-labelledby="tab-referensi"
+                    class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-indigo-700 dark:text-indigo-300 mb-4">Referensi Digital</h3>
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <a href="/repositori"
@@ -294,9 +332,22 @@
                     </div>
                 </div>
 
-                <!-- Tab Agenda -->
-                <div class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
-                    id="agenda" role="tabpanel" aria-labelledby="tab-agenda">
+                {{-- Konsultasi --}}
+                <div id="pane-konsultasi" role="tabpanel" aria-labelledby="tab-konsultasi"
+                    class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-semibold text-emerald-700 dark:text-emerald-300 mb-2">Konsultasi &
+                        Referensi</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Butuh bantuan mencari sumber & sitasi? Booking
+                        sesi dengan pustakawan.</p>
+                    <button data-modal-target="modalKonsultasi" data-modal-toggle="modalKonsultasi"
+                        class="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700">
+                        Booking Konsultasi
+                    </button>
+                </div>
+
+                {{-- Agenda --}}
+                <div id="pane-agenda" role="tabpanel" aria-labelledby="tab-agenda"
+                    class="hidden p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-fuchsia-700 dark:text-fuchsia-300 mb-4">Agenda Literasi</h3>
                     <div class="grid lg:grid-cols-2 gap-4">
                         <div
@@ -325,9 +376,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- FAQ -->
     <section class="py-8">
@@ -351,9 +404,11 @@
                             </button>
                         </h2>
                         <div id="acc-body-1" class="hidden" aria-labelledby="acc-1">
-                            <div class="py-3 text-sm text-gray-600 dark:text-gray-300">Masa peminjaman standar 7–14
-                                hari dan dapat diperpanjang jika tidak ada antrian.</div>
+                            <div class="py-3 text-sm text-gray-600 dark:text-gray-300">
+                                Masa peminjaman standar 7–14 hari dan dapat diperpanjang jika tidak ada antrian.
+                            </div>
                         </div>
+
                         <h2 id="acc-2">
                             <button type="button"
                                 class="flex w-full items-center justify-between py-4 text-left border-b border-gray-200 dark:border-gray-700"
@@ -367,11 +422,13 @@
                             </button>
                         </h2>
                         <div id="acc-body-2" class="hidden" aria-labelledby="acc-2">
-                            <div class="py-3 text-sm text-gray-600 dark:text-gray-300">Klik tombol <em>Booking
-                                    Konsultasi</em>, pilih tanggal dan topik, lalu konfirmasi.</div>
+                            <div class="py-3 text-sm text-gray-600 dark:text-gray-300">
+                                Klik <em>Booking Konsultasi</em>, pilih tanggal dan topik, lalu konfirmasi.
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Butuh bantuan cepat?</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-300">Hubungi kami untuk pertanyaan mengenai layanan.
@@ -407,6 +464,7 @@
                     </button>
                 </div>
                 <form action="/konsultasi/booking" method="POST" class="p-4 space-y-3">
+                    @csrf
                     <div>
                         <label class="block text-sm mb-1">Nama</label>
                         <input name="nama"
@@ -453,7 +511,9 @@
                             </svg>
                         </button>
                         <button type="button" data-modal-hide="modalKonsultasi"
-                            class="rounded-lg px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">Batal</button>
+                            class="rounded-lg px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            Batal
+                        </button>
                     </div>
                 </form>
             </div>
@@ -472,8 +532,9 @@
                         menyesuaikan.</p>
                 </div>
                 <a href="/kontak"
-                    class="px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100">Hubungi
-                    Kami</a>
+                    class="px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100">
+                    Hubungi Kami
+                </a>
             </div>
         </div>
     </section>

@@ -26,90 +26,28 @@
                         Telusuri koleksi, kelola peminjaman, dan temukan rekomendasi buku terbaik.
                     </p>
 
-                    <!-- Search / Quick Find -->
-                    <div
-                        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-3 shadow-sm">
-                        <form action="/search" method="GET" class="flex flex-col md:flex-row gap-3 md:items-center">
-                            <div class="flex-1 flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
-                                </svg>
-                                <input name="q" type="search" placeholder="Cari judul, penulis, ISBN…"
-                                    class="w-full bg-transparent outline-none placeholder:text-gray-400 text-gray-700 dark:text-gray-100" />
-                            </div>
-                            <div class="flex gap-2">
-                                <select name="kategori"
-                                    class="rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-gray-700 dark:text-gray-100">
-                                    <option value="">Semua Kategori</option>
-                                    <option>Teknologi</option>
-                                    <option>Ekonomi</option>
-                                    <option>Sastra</option>
-                                    <option>Hukum</option>
-                                </select>
-                                <button type="submit"
-                                    class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                    Cari
-                                </button>
-                            </div>
-                        </form>
-                        <!-- Quick keywords -->
-                        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-                            <span class="text-gray-500 dark:text-gray-400">Pintasan:</span>
-                            <a href="/search?q=AI"
-                                class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">AI</a>
-                            <a href="/search?q=UI%2FUX"
-                                class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">UI/UX</a>
-                            <a href="/search?q=Manajemen"
-                                class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Manajemen</a>
-                            <a href="/search?q=Data"
-                                class="px-2 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200">Data</a>
-                        </div>
-                    </div>
-
                     <!-- Stats / Counters -->
-                    <div x-data="{
-                        a: 0,
-                        b: 0,
-                        c: 0,
-                        run() {
-                            let t = 900;
-                            let s = 300;
-                            let p = 120;
-                            let i1 = setInterval(() => {
-                                if (this.a >= t) return clearInterval(i1);
-                                this.a += 30
-                            }, 20);
-                            let i2 = setInterval(() => {
-                                if (this.b >= s) return clearInterval(i2);
-                                this.b += 10
-                            }, 20);
-                            let i3 = setInterval(() => {
-                                if (this.c >= p) return clearInterval(i3);
-                                this.c += 5
-                            }, 20);
-                        }
-                    }" x-init="run()" class="grid grid-cols-3 gap-4 pt-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                         <div
                             class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 text-center">
-                            <div class="text-2xl font-bold text-blue-700 dark:text-blue-300" x-text="a"></div>
-                            <div class="text-xs text-gray-500">Koleksi Buku</div>
+                            <div class="text-2xl font-bold text-blue-700 dark:text-blue-300">
+                                {{ $statistik['buku'] ?? '...' }}
+                            </div>
+                            <div class="text-xs text-gray-500">Total Buku</div>
                         </div>
                         <div
                             class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 text-center">
-                            <div class="text-2xl font-bold text-green-700 dark:text-green-300" x-text="b"></div>
-                            <div class="text-xs text-gray-500">Anggota Aktif</div>
+                            <div class="text-2xl font-bold text-green-700 dark:text-green-300">
+                                {{ $statistik['anggota'] ?? '...' }}
+                            </div>
+                            <div class="text-xs text-gray-500">Total Anggota</div>
                         </div>
                         <div
                             class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-gray-800 text-center">
-                            <div class="text-2xl font-bold text-purple-700 dark:text-purple-300" x-text="c"></div>
-                            <div class="text-xs text-gray-500">Peminjaman Hari Ini</div>
+                            <div class="text-2xl font-bold text-purple-700 dark:text-purple-300">
+                                {{ $statistik['peminjaman'] ?? '...' }}
+                            </div>
+                            <div class="text-xs text-gray-500">Total Pinjaman</div>
                         </div>
                     </div>
                 </div>
@@ -118,17 +56,39 @@
                 <div class="lg:pl-6">
                     <div id="home-carousel" class="relative w-full" data-carousel="slide">
                         <div class="relative h-64 md:h-80 overflow-hidden rounded-2xl">
+                            <!-- 1. Reading room (active) -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600"
+                                    alt="Ruang baca perpustakaan yang tenang"
+                                    class="absolute block w-full h-full object-cover" loading="eager" />
+                            </div>
+
+                            <!-- 2. Deretan rak buku tinggi -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                 <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600"
-                                    class="absolute block w-full h-full object-cover" alt="Ruang baca modern" />
+                                    alt="Deretan rak buku perpustakaan"
+                                    class="absolute block w-full h-full object-cover" loading="lazy" />
                             </div>
+
+                            <!-- 3. Mahasiswa belajar di meja panjang -->
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="https://images.unsplash.com/photo-1544937950-fa07a98d237f?q=80&w=1600"
-                                    class="absolute block w-full h-full object-cover" alt="Rak buku" />
-                            </div>
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
                                 <img src="https://images.unsplash.com/photo-1519682577862-22b62b24e493?q=80&w=1600"
-                                    class="absolute block w-full h-full object-cover" alt="Mahasiswa belajar" />
+                                    alt="Mahasiswa belajar di perpustakaan"
+                                    class="absolute block w-full h-full object-cover" loading="lazy" />
+                            </div>
+
+                            <!-- 4. Close-up buku terbuka -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="https://images.unsplash.com/photo-1457694587812-e8bf29a43845?q=80&w=1600"
+                                    alt="Buku terbuka di atas meja" class="absolute block w-full h-full object-cover"
+                                    loading="lazy" />
+                            </div>
+
+                            <!-- 5. Anak membaca di sudut perpustakaan -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1600"
+                                    alt="Anak membaca buku di perpustakaan"
+                                    class="absolute block w-full h-full object-cover" loading="lazy" />
                             </div>
                         </div>
                         <!-- Slider controls -->
@@ -164,81 +124,104 @@
         </div>
     </section>
 
-    <!-- QUICK NAV CARDS -->
+    <!-- AKSES CEPAT FITUR UTAMA -->
     <section class="py-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <a href="/"
-                    class="group rounded-2xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-md transition">
+
+                <!-- Kartu Koleksi Buku -->
+                <div class="rounded-2xl border border-blue-200 dark:border-blue-700 p-5 bg-white dark:bg-gray-800">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Beranda</h3>
-                            <p class="text-sm text-gray-500">Kembali ke halaman utama</p>
+                            <a href="{{ route('koleksi.buku') }}"
+                                class="font-semibold text-blue-700 dark:text-blue-300 hover:underline">
+                                Koleksi Buku
+                            </a>
+                            <p class="text-sm text-gray-500">Lihat semua koleksi buku</p>
                         </div>
-                        <div
-                            class="p-2 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
+                        <a href="{{ route('koleksi.buku') }}"
+                            class="p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 hover:shadow-md
+                    dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" />
                             </svg>
-                        </div>
+                        </a>
                     </div>
-                </a>
-                <a href="/profil"
-                    class="group rounded-2xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-md transition">
+                </div>
+
+                <!-- Kartu Peminjaman -->
+                <div class="rounded-2xl border border-green-200 dark:border-green-700 p-5 bg-white dark:bg-gray-800">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Profil</h3>
-                            <p class="text-sm text-gray-500">Tentang perpustakaan</p>
+                            <a href="/peminjaman"
+                                class="font-semibold text-green-700 dark:text-green-300 hover:underline">
+                                Peminjaman
+                            </a>
+                            <p class="text-sm text-gray-500">Ajukan & kelola peminjaman buku</p>
                         </div>
-                        <div
-                            class="p-2 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 10-6 0 3 3 0 006 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-                <a href="/layanan"
-                    class="group rounded-2xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-md transition">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Layanan</h3>
-                            <p class="text-sm text-gray-500">Peminjaman, referensi, konsultasi</p>
-                        </div>
-                        <div
-                            class="p-2 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-300">
+                        <a href="/peminjaman"
+                            class="p-2 rounded-xl bg-green-50 text-green-600 hover:bg-green-100 hover:shadow-md
+                    dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7a2 2 0 002 2z" />
                             </svg>
-                        </div>
+                        </a>
                     </div>
-                </a>
-                <a href="/aktifitas"
-                    class="group rounded-2xl border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-md transition">
+                </div>
+
+                <!-- Kartu Riwayat -->
+                <div class="rounded-2xl border border-purple-200 dark:border-purple-700 p-5 bg-white dark:bg-gray-800">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Aktifitas</h3>
-                            <p class="text-sm text-gray-500">Agenda & pengumuman</p>
+                            <a href="/riwayat"
+                                class="font-semibold text-purple-700 dark:text-purple-300 hover:underline">
+                                Riwayat
+                            </a>
+                            <p class="text-sm text-gray-500">Lihat riwayat peminjaman & denda</p>
                         </div>
-                        <div
-                            class="p-2 rounded-xl bg-fuchsia-50 text-fuchsia-600 group-hover:bg-fuchsia-100 dark:bg-fuchsia-900/30 dark:text-fuchsia-300">
+                        <a href="/riwayat"
+                            class="p-2 rounded-xl bg-purple-50 text-purple-600 hover:bg-purple-100 hover:shadow-md
+                    dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3M12 22a10 10 0 110-20 10 10 0 010 20z" />
                             </svg>
-                        </div>
+                        </a>
                     </div>
-                </a>
+                </div>
+
+                <!-- Kartu Profil -->
+                <div
+                    class="rounded-2xl border border-emerald-200 dark:border-emerald-700 p-5 bg-white dark:bg-gray-800">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="/profil"
+                                class="font-semibold text-emerald-700 dark:text-emerald-300 hover:underline">
+                                Profil Anggota
+                            </a>
+                            <p class="text-sm text-gray-500">Kelola data & status keanggotaan</p>
+                        </div>
+                        <a href="/profil"
+                            class="p-2 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-100 hover:shadow-md
+                    dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 10-6 0 3 3 0 006 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- FEATURE: Layanan singkat -->
     <section class="py-6">
@@ -323,43 +306,21 @@
                     semua</a>
             </div>
             <div class="flex gap-4 overflow-x-auto pb-2 snap-x">
-                <!-- Card -->
-                <a href="#"
-                    class="min-w-[240px] snap-start rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition">
-                    <div class="aspect-[3/4] rounded-lg bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://images.unsplash.com/photo-1524578284144-d2958b59b39a?q=80&w=1200"
-                            alt="Book" />
-                    </div>
-                    <div class="space-y-1">
-                        <h3 class="font-semibold text-gray-900 dark:text-white">Clean Architecture</h3>
-                        <p class="text-sm text-gray-500">Robert C. Martin</p>
-                    </div>
-                </a>
-                <a href="#"
-                    class="min-w-[240px] snap-start rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition">
-                    <div class="aspect-[3/4] rounded-lg bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200"
-                            alt="Book" />
-                    </div>
-                    <div class="space-y-1">
-                        <h3 class="font-semibold text-gray-900 dark:text-white">Designing Data-Intensive Apps</h3>
-                        <p class="text-sm text-gray-500">Martin Kleppmann</p>
-                    </div>
-                </a>
-                <a href="#"
-                    class="min-w-[240px] snap-start rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition">
-                    <div class="aspect-[3/4] rounded-lg bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1200"
-                            alt="Book" />
-                    </div>
-                    <div class="space-y-1">
-                        <h3 class="font-semibold text-gray-900 dark:text-white">Refactoring</h3>
-                        <p class="text-sm text-gray-500">Martin Fowler</p>
-                    </div>
-                </a>
+                @foreach ($bukuRekomendasi as $buku)
+                    <a href="#"
+                        class="min-w-[240px] snap-start rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition">
+                        <div class="aspect-[3/4] rounded-lg bg-gray-100 dark:bg-gray-700 mb-3 overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                src="{{ $buku->foto ?? 'https://source.unsplash.com/featured/?book' }}"
+                                alt="{{ $buku->judul }}" />
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">{{ $buku->judul }}</h3>
+                            <p class="text-sm text-gray-500">{{ $buku->penulis }}</p>
+                            <p class="text-xs text-gray-400">Dipinjam {{ $buku->peminjamen_count }}x</p>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
@@ -480,27 +441,6 @@
                             Kami</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER CALL-TO-ACTION -->
-    <section class="py-10">
-        <div class="container mx-auto px-4">
-            <div
-                class="rounded-2xl border border-gray-200 dark:border-gray-700 p-6 md:p-8 bg-white dark:bg-gray-800 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Ingin update koleksi terbaru?</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-300">Berlangganan newsletter kami untuk rekomendasi
-                        buku pilihan.</p>
-                </div>
-                <form action="/subscribe" method="POST" class="w-full md:w-auto flex gap-2">
-                    <input type="email" name="email" placeholder="Email Anda"
-                        class="flex-1 md:w-80 rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800"
-                        required>
-                    <button
-                        class="px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100">Langganan</button>
-                </form>
             </div>
         </div>
     </section>
